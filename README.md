@@ -23,6 +23,7 @@
 
 ## Security
 * SBOM flags (default)
+* enable-sbom=cyclonedx,strict
 * Obfuscation
 
 ## Montitoring
@@ -34,6 +35,7 @@
 
 ## New 25.0 flags
 * `-H=Preserve`
+* Obfuscation
 * FFM, Vector API?
 * Crema?
 * Layers?
