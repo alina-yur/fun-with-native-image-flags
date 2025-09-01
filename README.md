@@ -1,41 +1,51 @@
 # Fun With (Native Image) Flags 🏁
 
-* Build time and run time flags
-* Rule of thumb: follow the JVM DX
+## Overview
+* Intro
+* General approach to the flags
+* Development
+* Performance
+* Sonitoring
+* Security
+* GraalVM for JDK 25
 
-## Development flag
-* `-Ob` (Maven `dev` profile)
-* `-Os`
-* -g: generate debugging information
-* -o: name of the output file to be generated
-* `--emit=build-report`
-* --dry-run: output the command line that would be used for building
-* --parallelism: specify the maximum number of threads to use concurrently during native executable generation?
-* Linking
+## Development Flags: Must have
+*  `-Ob`: Optimize for build time
+*  `-Os`: Optimize for executable size
+*  `-o`: file output: name and location
+*  `--emit-build-report`: extensive report about the build & executable
+*  Linking: dynamic (default), mostly static: `--static-nolibc`, static: `--static --libc=musl`
 
-## Performance / Optimization level flags
-* 👩‍💻 PGO
-  * ML-enabled PGO
-* G1 GC
-* `-march=native`
-* `-Xmx`
-* Memory management (`xmx`)
+## Development Flags: Advanced
+* `-g`: generate debugging information
+*  `--parallelism`: specify the maximum number of threads to use concurrently during native executable generation
+*  `--dry-run`: output the command line that would be used for the build
 
-## Security
-* SBOM flags (default)
-* enable-sbom=cyclonedx,strict
-* Obfuscation
+## Performance Flags
+*  `-O3`: Optimize for best performance
+*  `-pgo`: profile-guided optimizations
+*  `--gc=G1`: use the G1 GC for high throughput
+*  `-march=native`: specialize for the given hardware
 
 ## Montitoring
-* `--enable-monitoring`
-* 👩‍💻 Micrometer Micronaut
-* `jvmstat`  
-* JFR, JMX, `jcmd`
-* `perf stat <process>`
+* `--enable-monitoring=jfr`
+* `--enable-monitoring=jvmstat`
+* `--enable-monitoring=heapdump`
+* OpenTelemetry, Micrometer
+* Spring Boot Actuator / Micronaut Management
+* Vendor and cloud solutions — check your deployment environment
+* OS-level: `perf stat`, `vmmap`, etc
+
+## Security
+* `--enable-sbom=embed`
+* `--enable-sbom=classpath` (for programmatic access and external tooling)
+* `--enable-sbom=export`
+* Vulnerability scanning: `native-image-inspect --sbom ./target/demo-sbom | grype -v`
+* `--enable-sbom=class-level (specific classses, fields, methods, etc)`
 
 ## New 25.0 flags
-* `-H=Preserve`
-* Obfuscation
-* FFM, Vector API?
-* Crema?
-* Layers?
+* -H:Preserve=all: include _everything_
+  * or a module/package/cp entry
+* `-H:+RelativeCodePointers`: extra security at high performance with PIE
+* `-H:+ReportDynamicAccess`: a visual report of reflection and other dynamic access config
+More performance and security :)
