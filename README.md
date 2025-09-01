@@ -44,7 +44,7 @@
 * `--enable-sbom=class-level (specific classses, fields, methods, etc)`
 
 ## New 25.0 flags 🔮
-* -H:Preserve=all: include _everything_
+* `-H:Preserve=all`: include _everything_
   * or a module/package/cp entry
 * `-H:+RelativeCodePointers`: extra security at high performance with PIE
 * `-H:+ReportDynamicAccess`: a visual report of reflection and other dynamic access config
