@@ -27,7 +27,7 @@
 *  `-pgo`: profile-guided optimizations
 *  `--gc=G1`: use the G1 GC for high throughput
 *  `-march=native`: specialize for the given hardware
-*  *  👩‍💻 demo: [swiss-dictionary](https://github.com/alina-yur/swiss-german-dictionary)
+*  👩‍💻 demo: [swiss-dictionary](https://github.com/alina-yur/swiss-german-dictionary)
 
 ## Montitoring 📈
 * `--enable-monitoring=jfr`
