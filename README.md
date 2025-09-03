@@ -15,6 +15,7 @@
 *  `-o`: file output: name and location
 *  `--emit-build-report`: extensive report about the build & executable
 *  Linking: dynamic (default), mostly static: `--static-nolibc`, static: `--static --libc=musl`
+*  👩‍💻 demo: [native-micronaut-reflection](https://github.com/alina-yur/native-micronaut-reflection)
 
 ## Development Flags: Advanced 🛠️
 * `-g`: generate debugging information
@@ -26,6 +27,7 @@
 *  `-pgo`: profile-guided optimizations
 *  `--gc=G1`: use the G1 GC for high throughput
 *  `-march=native`: specialize for the given hardware
+*  *  👩‍💻 demo: [swiss-dictionary](https://github.com/alina-yur/swiss-german-dictionary)
 
 ## Montitoring 📈
 * `--enable-monitoring=jfr`
@@ -42,6 +44,7 @@
 * `--enable-sbom=export`
 * Vulnerability scanning: `native-image-inspect --sbom ./target/demo-sbom | grype -v`
 * `--enable-sbom=class-level (specific classses, fields, methods, etc)`
+* 👩‍💻 demo: [native-micronaut-reflection](https://github.com/alina-yur/native-micronaut-reflection)
 
 ## New 25.0 flags 🔮
 * `-H:Preserve=all`: include _everything_
